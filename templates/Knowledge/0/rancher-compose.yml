@@ -1,0 +1,18 @@
+.catalog:
+  name: "knowledge"
+  version: ""
+  description: "Deploy knowledge In Rancher"
+  uuid: knowledge-0
+  minimum_rancher_version: v1.0.0
+  questions:
+    - variable: CONCOURSE_EXTERNAL_ADDR
+      description: "Address of Concourse Service"
+      label: "Concourse External Address"
+      type: "string"
+      required: true
+      default: "0.0.0.0"
+
+knowledge-db:
+  scale: 1
+knowledge-app:
+  scale: 1
