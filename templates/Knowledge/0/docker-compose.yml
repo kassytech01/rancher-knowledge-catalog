@@ -1,21 +1,28 @@
-knowledge-db:
-  image: postgres:9.6.6
-  labels:
-    io.rancher.container.hostname_override: container_name
-  environment:
-    POSTGRES_USER: postgres
-    POSTGRES_PASSWORD: admin123
-    POSTGRES_DB: knowledge_production
-  volumes:
-    - ./volumes/postgres/data:/var/lib/postgresql/data
-  restart: always
+version: '2'
+services:
+  knowledge-db:
+    image: postgres:9.6.6
+    labels:
+      io.rancher.container.hostname_override: container_name
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin123
+      POSTGRES_DB: knowledge_production
+    volumes:
+      - knowledge-datavolume/postgres/data:/var/lib/postgresql/data
+    restart: always
 
-knowledge-app:
-  image: koda/docker-knowledge
-  labels:
-    io.rancher.container.hostname_override: container_name
-  links: [knowledge-db]
-  volumes:
-      - ./volumes/knowledge:/root/.knowledge
-  ports: ["8082:8080"]
-  restart: always
+  knowledge-app:
+    image: koda/docker-knowledge
+    labels:
+      io.rancher.container.hostname_override: container_name
+    links: [knowledge-db]
+    volumes:
+        - knowledge-datavolume/knowledge:/root/.knowledge
+    ports: ["8082:8080"]
+    restart: always
+
+volumes:
+  knowledge-datavolume:
+    driver: rancher-nfs
+    external: true
