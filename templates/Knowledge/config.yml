@@ -1,6 +1,6 @@
 name: Knowledge
 description: |
   Deploy Knowledge In Rancher
-version: 1.12.0
+version: 1.0.0
 category: Knowledge Base
 projectURL: "https://information-knowledge.support-project.org/ja/"

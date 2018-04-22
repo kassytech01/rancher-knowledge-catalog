@@ -9,20 +9,18 @@ services:
       POSTGRES_PASSWORD: admin123
       POSTGRES_DB: knowledge_production
     volumes_from:
-      - knowledge-datavolume/postgres/data:/var/lib/postgresql/data
+    - knowledge-datavolume/postgres/data:/var/lib/postgresql/data
     restart: always
-
   knowledge-app:
     image: koda/docker-knowledge
     labels:
       io.rancher.container.hostname_override: container_name
     links: [knowledge-db]
     volumes_from:
-        - knowledge-datavolume/knowledge:/root/.knowledge
+    - knowledge-datavolume/knowledge:/root/.knowledge
     ports: ["8082:8080"]
     restart: always
-
 volumes:
   knowledge-datavolume:
-    driver: rancher-nfs
+    driver: local
     external: true
