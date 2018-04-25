@@ -27,3 +27,4 @@ volumes:
       size: 10
       volumeType: gp2
       iops: 1000
+      ec2_az: ap-northeast-2
