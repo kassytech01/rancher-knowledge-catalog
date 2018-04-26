@@ -13,7 +13,8 @@ services:
   knowledge-app:
     image: koda/docker-knowledge
     labels:
-      io.rancher.container.hostname_override: container_name
+      io.rancher.container.hostname_override:
+      io.rancher.host.zone: ap-northeast-2
     volumes:
       - knowledge-volume:/root/.knowledge
     links: [knowledge-db]
