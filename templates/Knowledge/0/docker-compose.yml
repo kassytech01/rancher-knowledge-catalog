@@ -14,7 +14,7 @@ services:
     image: koda/docker-knowledge
     labels:
       io.rancher.container.hostname_override: container_name
-      io.rancher.host.zone: ap-northeast-2
+      io.rancher.host.zone: ap-northeast-1
     volumes:
       - knowledge-volume:/root/.knowledge
     links: [knowledge-db]
@@ -28,4 +28,4 @@ volumes:
       size: 10
       volumeType: gp2
       iops: 1000
-      ec2_az: ap-northeast-2
+      ec2_az: ap-northeast-1

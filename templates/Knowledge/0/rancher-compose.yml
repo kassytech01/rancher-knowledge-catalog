@@ -1,6 +1,6 @@
 .catalog:
   name: "knowledge"
-  version: "1.12.0-1"
+  version: "1.12.0"
   description: "Deploy knowledge In Rancher"
   uuid: knowledge-0
   minimum_rancher_version: v1.0.0
